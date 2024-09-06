@@ -44,6 +44,12 @@ cd triton-ubi9-cuda-container
 podman build -t triton-ubi9-container .
 ```
 
+If you don't want to build the image by yourself, you can pull the image using podman with :
+
+```bash
+podman pull quay.io/rh-ee-asangior/triton-ubi9-cuda
+```
+
 ### 3. Run the Image
 
 After building the image, you can run it using the following command (for nvidia GPUs):
