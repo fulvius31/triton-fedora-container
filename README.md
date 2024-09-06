@@ -39,8 +39,8 @@ Next, clone this repository and build the container image. This can take a while
 Note: Adjust the env variable `MAX_JOBS=2` depending on your RAM size.
 
 ```bash
-git clone git@github.com:fulvius31/triton-fedora-container.git
-cd triton-fedora-container
+git clone git@github.com:fulvius31/triton-ubi9-cuda-container.git
+cd triton-ubi9-cuda-container
 podman build -t triton-ubi9-container .
 ```
 
