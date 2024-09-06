@@ -1,4 +1,4 @@
-# Triton Fedora Container
+# Triton UBI9 CUDA Container
 
 This repository helps you set up an environment for **Triton** using a Podman container. It is particularly useful for users who want to run Triton on a **Windows host**, which can be advantageous due to the availability of the most up-to-date Nvidia CUDA drivers for Windows.
 
@@ -8,7 +8,7 @@ If you're looking to run **Triton** on a **Windows** machine, this containerized
 
 ## Dependencies
 
-To get started, ensure the following dependencies are installed on your system:
+To get started, ensure the following dependencies are installed on your Windows system:
 
 - **Nvidia CUDA Drivers** (for Windows)
 - **Podman Desktop** (for Windows, using WSL)
@@ -25,6 +25,11 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
 sudo yum install -y nvidia-container-toolkit
 sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+```
+
+Finally, check if the GPU is detected:
+
+```bash
 nvidia-ctk cdi list
 ```
 
@@ -36,7 +41,7 @@ Note: Adjust the env variable `MAX_JOBS=2` depending on your RAM size.
 ```bash
 git clone git@github.com:fulvius31/triton-fedora-container.git
 cd triton-fedora-container
-podman build -t triton-fedora-container .
+podman build -t triton-ubi9-container .
 ```
 
 ### 3. Run the Image
@@ -44,7 +49,7 @@ podman build -t triton-fedora-container .
 After building the image, you can run it using the following command (for nvidia GPUs):
 
 ```bash
-podman run --privileged -it -d --device nvidia.com/gpu=all triton-fedora-container /bin/bash
+podman run --privileged -it -d --device nvidia.com/gpu=all triton-ubi9-container /bin/bash
 ```
 
 Ensure that you have configured Podman to allow access to the GPU.
